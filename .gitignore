@@ -1,0 +1,10 @@
+..docker
+.devcontainer
+.history
+.ipynb_checkpoints
+.vscode
+.env
+dataset/
+*.exe
+*.stackdump
+venv/

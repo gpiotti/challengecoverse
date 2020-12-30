@@ -1,0 +1,7 @@
+import os
+
+
+class AppConfig:
+    ELASTICSEARCH_HOSTS = os.getenv("ELASTICSEARCH_HOSTS")
+    S3_ENDPOINT_URL = os.getenv("S3_ENDPOINT_URL")
+    MYSQL_CONNECTION_STRING = os.getenv("MYSQL_CONNECTION_STRING")
