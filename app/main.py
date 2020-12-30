@@ -24,6 +24,11 @@ async def startup():
     await database.connect()
 
 
+@app.on_event("shutdown")
+async def shutdown():
+    await database.disconnect()
+
+
 async def download_dataset(dataset: Dataset):
     wr.config.s3_endpoint_url = config.S3_ENDPOINT_URL
     data_stream = wr.s3.read_csv(
@@ -61,8 +66,3 @@ async def insert_new_dataset(dataset: Dataset):
         "status": HTTPStatus.OK,
         **dataset.dict(),
     }
-
-
-@app.on_event("shutdown")
-async def shutdown():
-    await database.disconnect()

@@ -8,3 +8,5 @@ dataset/
 *.exe
 *.stackdump
 venv/
+*.csv
+*.tsv
