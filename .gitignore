@@ -9,4 +9,6 @@ dataset/
 *.stackdump
 venv/
 *.csv
-*.tsv
+*.
+*.pyc
+app/__pycache__/

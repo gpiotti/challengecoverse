@@ -1,6 +1,7 @@
 import boto3
 from app.database import database, jobs
 from app.models import Dataset
+import datetime
 
 
 def get_boto3_session():
@@ -21,7 +22,7 @@ async def update_job_status(job_id: int, status: str):
     query = (
         jobs.update(jobs)
         .where(jobs.columns.id == job_id)
-        .values(status=status)
+        .values(status=status, end_time=datetime.datetime.utcnow())
     )
     query_result = await database.execute(query)
     return query_result

@@ -14,6 +14,3 @@ class Job(BaseModel):
     start_time: datetime.datetime
     end_time: datetime.datetime
     status: str
-
-    class Config:
-        orm_mode = True

@@ -3,7 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from app.settings import AppConfig
 import databases
 import sqlalchemy
-import datetime
+from sqlalchemy.sql import func
 
 config = AppConfig()
 
@@ -20,9 +20,7 @@ jobs = sqlalchemy.Table(
     metadata,
     sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True, index=True),
     sqlalchemy.Column("s3_path", sqlalchemy.String(200), unique=False),
-    sqlalchemy.Column(
-        "start_time", sqlalchemy.DateTime, default=datetime.datetime.utcnow
-    ),
+    sqlalchemy.Column("start_time", sqlalchemy.DateTime, default=func.now()),
     sqlalchemy.Column("end_time", sqlalchemy.DateTime, default=None),
     sqlalchemy.Column("status", sqlalchemy.String(100), default="pending"),
 )
